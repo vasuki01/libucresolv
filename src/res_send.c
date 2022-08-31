@@ -995,7 +995,7 @@ reopen (res_state statp, int *terrno, int ns)
 	ucresolv_debug("UCLIBC reopen\n");
 	if (EXT(statp).nssocks[ns] == -1) {
 		struct sockaddr *nsap = get_nsaddr (statp, ns);
-		socklen_t slen;
+		socklen_t slen = 0;
 
 		/* only try IPv6 if IPv6 NS and if not failed before */
 		if (nsap->sa_family == AF_INET6 && !statp->ipv6_unavail) {
